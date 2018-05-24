@@ -12,9 +12,9 @@ import tempfile
 
 from stat import ST_ATIME, ST_MTIME
 
-EOL_UNIX = '\n'
-EOL_WINDOWS = '\r\n'
-EOL_MAC = '\r'
+EOL_UNIX = b'\n'
+EOL_WINDOWS = b'\r\n'
+EOL_MAC = b'\r'
 
 
 def _normalize_line_endings(lines, line_ending='unix'):
@@ -164,7 +164,7 @@ def main():
 
         if os.path.isfile(file_to_process):
             data = _read_file_data(file_to_process)
-            if '\0' in data:
+            if b'\0' in data:
                 if args.quiet is False:
                     print("- '{0}' : is a binary file (skip)".format(
                         file_to_process))
